@@ -891,7 +891,7 @@ try {
     if ($kind -eq 'file') {
         $dlg = New-Object System.Windows.Forms.OpenFileDialog
         $dlg.Title = $title
-        $dlg.Filter = 'Python (python.exe)|python.exe|可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*'
+        $dlg.Filter = 'Python (python.exe)|python.exe|Executable (*.exe)|*.exe|All files (*.*)|*.*'
         $dlg.CheckFileExists = $true
         if ($initial -and (Test-Path -LiteralPath $initial)) {
             if (Test-Path -LiteralPath $initial -PathType Container) {
