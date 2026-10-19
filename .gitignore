@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Runtime state (may contain API tokens and absolute paths)
+data/
+.testdata/
+
+# Packaging
+build/
+dist/
+.buildvenv/
+*.spec
+installer/Output/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

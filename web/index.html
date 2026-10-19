@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ComfyDeck</title>
+  <link rel="icon" href="/favicon.ico?v=3" type="image/svg+xml">
+  <script>
+    (function () {
+      var pref = localStorage.getItem('cd-theme') || 'auto';
+      var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = pref === 'auto' ? (dark ? 'dark' : 'light') : pref;
+    })();
+  </script>
+  <link rel="stylesheet" href="/static/style.css?v=3">
+</head>
+<body>
+  <div id="shell" class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/overview">
+        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 12h8V4M12 12v8" stroke-width="1.6"/></svg>
+        <div>ComfyDeck<small>ComfyUI 管理器</small></div>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#/overview" data-route="overview" class="nav-item"><span class="nav-ico" data-icon="grid"></span><span>总览</span></a>
+        <a href="#/launch" data-route="launch" class="nav-item"><span class="nav-ico" data-icon="terminal"></span><span>启动台</span></a>
+
+        <div class="nav-label">创作</div>
+        <a href="#/gallery" data-route="gallery" class="nav-item"><span class="nav-ico" data-icon="image"></span><span>图库</span><span class="nav-count" id="nav-gallery-count"></span></a>
+        <a href="#/workflows" data-route="workflows" class="nav-item"><span class="nav-ico" data-icon="workflow"></span><span>工作流</span><span class="nav-count" id="nav-workflows-count"></span></a>
+
+        <div class="nav-label">资源</div>
+        <a href="#/models" data-route="models" class="nav-item"><span class="nav-ico" data-icon="layers"></span><span>模型库</span><span class="nav-count" id="nav-models-count"></span></a>
+        <a href="#/civitai" data-route="civitai" class="nav-item"><span class="nav-ico" data-icon="compass"></span><span>CivitAI</span></a>
+        <a href="#/downloads" data-route="downloads" class="nav-item"><span class="nav-ico" data-icon="download"></span><span>下载</span><span class="nav-count" id="nav-downloads"></span></a>
+
+        <div class="nav-label">维护</div>
+        <a href="#/nodes" data-route="nodes" class="nav-item"><span class="nav-ico" data-icon="plug"></span><span>插件</span><span class="nav-count warn" id="nav-nodes-updates"></span></a>
+        <a href="#/core" data-route="core" class="nav-item"><span class="nav-ico" data-icon="cpu"></span><span>核心版本</span><span class="nav-count warn" id="nav-core-update"></span></a>
+        <a href="#/trash" data-route="trash" class="nav-item"><span class="nav-ico" data-icon="trash"></span><span>回收站</span><span class="nav-count" id="nav-trash"></span></a>
+        <a href="#/settings" data-route="settings" class="nav-item"><span class="nav-ico" data-icon="settings"></span><span>设置</span></a>
+      </nav>
+
+      <div class="side-status" id="side-status">
+        <div class="top"><span class="dot"></span><span>检测中…</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menu-toggle" title="菜单" data-icon="menu"></button>
+        <div class="crumb" id="crumb">总览</div>
+        <div class="sp"></div>
+        <button class="kbd-btn" id="btn-palette"><span data-icon="search" style="display:grid"></span><span>搜索与命令</span><span class="kbd">Ctrl K</span></button>
+        <button class="icon-btn" id="btn-jobs" title="任务中心"><span data-icon="activity" style="display:grid"></span><span class="pip" id="jobs-pip"></span></button>
+        <button class="icon-btn" id="btn-theme" title="切换主题" data-icon="sun"></button>
+        <button class="icon-btn" id="btn-refresh" title="刷新当前页面" data-icon="refresh"></button>
+      </header>
+
+      <div id="view" class="view">
+        <div class="loading-page"><div class="spinner"></div><div>正在连接 ComfyDeck…</div></div>
+      </div>
+    </main>
+  </div>
+
+  <div class="job-dock" id="job-dock" hidden></div>
+  <div id="toast-root" class="toast-root"></div>
+  <script src="/static/icons.js?v=3"></script>
+  <script src="/static/core.js?v=3"></script>
+  <script src="/static/overview.js?v=3"></script>
+  <script src="/static/launch.js?v=3"></script>
+  <script src="/static/gallery.js?v=3"></script>
+  <script src="/static/workflows.js?v=3"></script>
+  <script src="/static/models.js?v=3"></script>
+  <script src="/static/civitai.js?v=3"></script>
+  <script src="/static/nodes.js?v=3"></script>
+  <script src="/static/corepage.js?v=3"></script>
+  <script src="/static/settings.js?v=3"></script>
+  <script src="/static/trash.js?v=3"></script>
+  <script src="/static/palette.js?v=3"></script>
+  <script src="/static/actions.js?v=3"></script>
+  <script src="/static/boot.js?v=3"></script>
+</body>
+</html>
