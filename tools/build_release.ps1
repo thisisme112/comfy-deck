@@ -183,7 +183,10 @@ $lines = foreach ($asset in $assets) {
     $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $asset.FullName).Hash.ToLowerInvariant()
     "$hash  $($asset.Name)"
 }
-Set-Content -LiteralPath (Join-Path $releaseDir "SHA256SUMS.txt") -Value $lines -Encoding ASCII
+$sumPath = Join-Path $releaseDir "SHA256SUMS.txt"
+# LF endings keep `sha256sum -c` working from Git Bash / WSL as well.
+$sumContent = (($lines -join "`n") + "`n")
+[System.IO.File]::WriteAllText($sumPath, $sumContent, [System.Text.Encoding]::ASCII)
 
 Write-Host ""
 Write-Host "构建完成，发布文件位于：" -ForegroundColor Green
